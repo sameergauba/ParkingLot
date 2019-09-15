@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class ParkingLotServiceTest {
 	
-	ParkingLotServiceImpl parkingLotService;
+	ParkingLotService parkingLotService;
 	
 	@Test
 	public void testParkCarAvailableSpace(){
@@ -40,6 +40,53 @@ public class ParkingLotServiceTest {
 		int actual = parkingLotService.getSlotNumberForGivenRegistrationNumber("21222");
 		assertEquals(-1, actual);
 	}
-	
+	@Test
+	public void testGetSlotNumberForColorCarPresent() {
+		parkingLotService = new ParkingLotServiceImpl(1);
+		parkingLotService.parkCar(new Car("21221", "white"));
+		parkingLotService.getSlotNumberForGivenColor("white");
+	}
+
+	@Test
+	public void testGetSlotNumberForColorCarNotPresent() {
+		parkingLotService = new ParkingLotServiceImpl(1);
+		parkingLotService.parkCar(new Car("21221", "white"));
+		parkingLotService.getSlotNumberForGivenColor("red");
+	}
+
+	@Test
+	public void testGetRegNumberForColorCarPresent() {
+		parkingLotService = new ParkingLotServiceImpl(1);
+		parkingLotService.parkCar(new Car("21221", "white"));
+		parkingLotService.getRegistrationNumberForGivenColor("white");
+	}
+
+	@Test
+	public void testGetRegNumberForColorCarNotPresent() {
+		parkingLotService = new ParkingLotServiceImpl(1);
+		parkingLotService.parkCar(new Car("21221", "white"));
+		parkingLotService.getRegistrationNumberForGivenColor("red");
+	}
+
+	@Test
+	public void testLeaveCarWithCorrectSlotNumber() {
+		parkingLotService = new ParkingLotServiceImpl(1);
+		int slot = parkingLotService.parkCar(new Car("21221", "white"));
+		parkingLotService.leaveCar(slot-1);
+	}
+
+	@Test
+	public void testLeaveCarWithWrongSlotNumber() {
+		parkingLotService = new ParkingLotServiceImpl(1);
+		parkingLotService.parkCar(new Car("21221", "white"));
+		parkingLotService.leaveCar(2);
+	}
+
+	@Test
+	public void testStatus() {
+		parkingLotService = new ParkingLotServiceImpl(1);
+		parkingLotService.parkCar(new Car("21221", "white"));
+		parkingLotService.getStatus();
+	}
 	
 }

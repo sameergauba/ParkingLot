@@ -84,6 +84,7 @@ public class ParkingLotServiceImpl implements ParkingLotService {
             Car car = parkingLot.get(i);
             if (car != null && regNum.equals(car.getRegistrationNumber())) {
                 res = i + 1;
+                break;
             }
         }
         return res;
