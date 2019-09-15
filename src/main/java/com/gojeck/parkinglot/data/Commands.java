@@ -4,7 +4,7 @@ import com.gojeck.parkinglot.utils.ConstantsUtil;
 
 public enum Commands {
 
-    CREATE, PARK, LEAVE, STATUS, REGISTRATION_NUMBERS, SLOT_COLOUR, SLOT_REGISTRATION;
+    CREATE, PARK, LEAVE, STATUS, REGISTRATION_NUMBERS, SLOT_COLOUR, SLOT_REGISTRATION, NO_COMMAND;
 
     public static Commands getCommand(String comm) {
         if (ConstantsUtil.CREATE.equals(comm))
@@ -22,7 +22,7 @@ public enum Commands {
         else if (ConstantsUtil.SLOT_REGISTRATION.equals(comm))
             return SLOT_REGISTRATION;
         else
-            return null;
+            return NO_COMMAND;
 
     }
 }
