@@ -37,8 +37,13 @@ public class ParkingLotServiceImpl implements ParkingLotService {
     }
 
     public void leaveCar(int slotNumber) {
+        if(slotNumber >= capacity) {
+            System.out.println("Invalid Slot Number, Try Again.");
+            return;
+        }
         freeSlots.add(slotNumber);
         parkingLot.put(slotNumber, null);
+        System.out.println("Slot number " + (slotNumber+1) + " is free");
     }
 
     public void getStatus() {

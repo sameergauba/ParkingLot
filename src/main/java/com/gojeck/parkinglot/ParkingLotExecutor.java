@@ -41,7 +41,6 @@ public class ParkingLotExecutor {
             case LEAVE:
                 parkingSlot = Integer.parseInt(commandLine[1]);
                 parkingLot.leaveCar(parkingSlot - 1);
-                System.out.println("Slot number " + parkingSlot + " is free");
                 break;
             case PARK:
                 regNo = commandLine[1];
