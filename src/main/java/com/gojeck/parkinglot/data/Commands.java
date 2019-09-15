@@ -1,28 +1,36 @@
 package com.gojeck.parkinglot.data;
 
-import com.gojeck.parkinglot.utils.ConstantsUtil;
-
 public enum Commands {
 
-    CREATE, PARK, LEAVE, STATUS, REGISTRATION_NUMBERS, SLOT_COLOUR, SLOT_REGISTRATION, NO_COMMAND;
+    CREATE("create_parking_lot"), PARK("park"), LEAVE("leave"), STATUS("status"), REGISTRATION_NUMBERS("registration_numbers_for_cars_with_colour"),
+    SLOT_COLOUR("slot_numbers_for_cars_with_colour"), SLOT_REGISTRATION("slot_number_for_registration_number"), NO_COMMAND("");
+    String command;
+
+    Commands(String command) {
+        this.command = command;
+    }
+
+    String getCommand(){
+        return command;
+    }
 
     public static Commands getCommand(String comm) {
-        if (ConstantsUtil.CREATE.equals(comm))
+        if (CREATE.getCommand().equals(comm))
             return CREATE;
-        else if (ConstantsUtil.PARK.equals(comm))
+        else if (PARK.getCommand().equals(comm))
             return PARK;
-        else if (ConstantsUtil.LEAVE.equals(comm))
+        else if (LEAVE.getCommand().equals(comm))
             return LEAVE;
-        else if (ConstantsUtil.STATUS.equals(comm))
+        else if (STATUS.getCommand().equals(comm))
             return STATUS;
-        else if (ConstantsUtil.REGISTRATION_NUMBERS.equals(comm))
+        else if (REGISTRATION_NUMBERS.getCommand().equals(comm))
             return REGISTRATION_NUMBERS;
-        else if (ConstantsUtil.SLOT_COLOUR.equals(comm))
+        else if (SLOT_COLOUR.getCommand().equals(comm))
             return SLOT_COLOUR;
-        else if (ConstantsUtil.SLOT_REGISTRATION.equals(comm))
+        else if (SLOT_REGISTRATION.getCommand().equals(comm))
             return SLOT_REGISTRATION;
         else
-            return NO_COMMAND;
+            return  NO_COMMAND;
 
     }
 }
