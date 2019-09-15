@@ -7,6 +7,7 @@ import java.util.TreeSet;
 
 import com.gojeck.parkinglot.data.Car;
 import com.gojeck.parkinglot.business.ParkingLotService;
+import com.gojeck.parkinglot.utils.PrintUtil;
 
 public class ParkingLotServiceImpl implements ParkingLotService {
     private int capacity;
@@ -58,7 +59,7 @@ public class ParkingLotServiceImpl implements ParkingLotService {
                 res.add(car.getRegistrationNumber());
             }
         }
-        printStringList(res);
+        PrintUtil.printStringList(res);
     }
 
     public void getSlotNumberForGivenColor(String colour) {
@@ -69,7 +70,7 @@ public class ParkingLotServiceImpl implements ParkingLotService {
                 res.add(i + 1);
             }
         }
-        printIntegerList(res);
+        PrintUtil.printIntegerList(res);
     }
 
     public int getSlotNumberForGivenRegistrationNumber(String regNum) {
@@ -82,22 +83,4 @@ public class ParkingLotServiceImpl implements ParkingLotService {
         }
         return res;
     }
-
-    private void printStringList(List<String> list) {
-        int i = 0;
-        for (i = 0; i < list.size() - 1; i++) {
-            System.out.print(list.get(i) + ", ");
-        }
-        System.out.println(list.get(i));
-    }
-
-    private void printIntegerList(List<Integer> list) {
-        int i = 0;
-        for (i = 0; i < list.size() - 1; i++) {
-            System.out.print(list.get(i) + ", ");
-        }
-        System.out.println(list.get(i));
-    }
-
-
 }
